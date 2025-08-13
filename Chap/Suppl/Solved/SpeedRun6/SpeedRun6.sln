@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35208.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedRun6", "SpeedRun6.csproj", "{5E73AC9E-AA31-4116-97CD-44E705CE922A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E73AC9E-AA31-4116-97CD-44E705CE922A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E73AC9E-AA31-4116-97CD-44E705CE922A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E73AC9E-AA31-4116-97CD-44E705CE922A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E73AC9E-AA31-4116-97CD-44E705CE922A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18EA7518-561A-4DA7-9EC8-CB5CEF6C2928}
+	EndGlobalSection
+EndGlobal
