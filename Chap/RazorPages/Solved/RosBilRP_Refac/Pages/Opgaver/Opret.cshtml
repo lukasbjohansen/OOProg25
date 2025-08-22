@@ -1,0 +1,30 @@
+﻿@page
+@model RosBilRP.Pages.Opgaver.OpretModel
+@{
+}
+
+<h1 class="display-3 mb-5">Opret ny Opgave</h1>
+
+<form method="post">
+	<div class="form-group mb-3">
+		<label class="control-label">Ansat</label>
+		<select asp-for="@Model.Element.AnsatId" asp-items="@Model.AnsatList" class="form-control"></select>
+		<span asp-validation-for="@Model.Element.AnsatId" class="text-danger"></span>
+	</div>
+	<div class="form-group mb-3">
+		<label class="control-label">Udlejning</label>
+		<select asp-for="@Model.Element.LejeId" asp-items="@Model.LejeList" class="form-control"></select>
+		<span asp-validation-for="@Model.Element.LejeId" class="text-danger"></span>
+	</div>
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Element.Beskrivelse" class="control-label"></label>
+		<input asp-for="@Model.Element.Beskrivelse" class="form-control" />
+		<span asp-validation-for="@Model.Element.Beskrivelse" class="text-danger"></span>
+	</div>
+
+	<p>
+		<div class="form-group mb-3">
+			<input type="submit" value="Create" class="btn btn-outline-primary" />
+		</div>
+	</p>
+</form>

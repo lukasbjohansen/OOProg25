@@ -1,0 +1,14 @@
+﻿@page
+@model RosBilRP.Pages.Opgaver.SletModel
+@{
+}
+
+<h1 class="display-3 mb-5">Vil du slette denne Opgave?</h1>
+
+<div class="alert alert-danger">
+    <h5>Er du sikker på, at du vil slette @Model.Element.ToString()</h5>
+    <form method="post">
+        <input type="submit" value="Ja" class="btn btn-outline-danger mt-3">
+        <a class="btn btn-outline-primary mt-3" asp-page="/Opgaver/Alle">Nej</a>
+    </form>
+</div>

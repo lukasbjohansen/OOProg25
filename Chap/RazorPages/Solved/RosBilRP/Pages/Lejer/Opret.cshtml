@@ -1,0 +1,35 @@
+﻿@page
+@model RosBilRP.Pages.Lejer.OpretModel
+@{
+}
+
+<h1 class="display-3 mb-5">Opret ny Udlejning</h1>
+
+<form method="post">
+	<div class="form-group mb-3">
+		<label class="control-label">Kunde</label>
+		<select asp-for="@Model.Element.KundeId" asp-items="@Model.KundeList" class="form-control"></select>
+		<span asp-validation-for="@Model.Element.KundeId" class="text-danger"></span>
+	</div>
+	<div class="form-group mb-3">
+		<label class="control-label">Bil</label>
+		<select asp-for="@Model.Element.BilId" asp-items="@Model.BilList" class="form-control"></select>
+		<span asp-validation-for="@Model.Element.BilId" class="text-danger"></span>
+	</div>
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Element.Dato" class="control-label"></label>
+		<input asp-for="@Model.Element.Dato" type="date" class="form-control" />
+		<span asp-validation-for="@Model.Element.Dato" class="text-danger"></span>
+	</div>
+	<div class="form-group mb-3">
+		<label asp-for="@Model.Element.AntalDage" class="control-label"></label>
+		<input asp-for="@Model.Element.AntalDage" class="form-control" />
+		<span asp-validation-for="@Model.Element.AntalDage" class="text-danger"></span>
+	</div>
+
+	<p>
+		<div class="form-group mb-3">
+			<input type="submit" value="Create" class="btn btn-outline-primary" />
+		</div>
+	</p>
+</form>
