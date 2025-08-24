@@ -7,7 +7,7 @@ try
 {
     theAccount = new BankAccount(25.0);
 }
-catch (IllegalInterestRateException e)
+catch (ArgumentException e)
 {
     Console.WriteLine("You tried to use an illegal interest rate: " + e.Message);
 }
@@ -16,20 +16,26 @@ catch (IllegalInterestRateException e)
 theAccount = new BankAccount(5.0);
 theAccount.Deposit(2000);
 
+Console.WriteLine($"Balance is now : {theAccount.Balance}");
+
+
 try
 {
     theAccount.Deposit(-1000);
 }
-catch (NegativeAmountException e)
+catch (ArgumentException e)
 {
     Console.WriteLine("You tried to deposit a negative amount: " + e.Message);
 }
+
+Console.WriteLine($"Balance is now : {theAccount.Balance}");
+
 
 try
 {
     theAccount.Withdraw(3000);
 }
-catch (WithdrawAmountTooLargeException e)
+catch (ArgumentException e)
 {
     Console.WriteLine("You tried to withdraw too much money: " + e.Message);
 }

@@ -26,7 +26,7 @@ public class BankAccount
     {
         if (Balance < amount)
         {
-            throw new WithdrawAmountTooLargeException($"Amount was {amount} kr., balance was {Balance} kr.");
+            throw new ArgumentException($"In Withdraw: Amount was {amount} kr., balance was {Balance} kr.");
         }
 
         Balance = Balance - amount;

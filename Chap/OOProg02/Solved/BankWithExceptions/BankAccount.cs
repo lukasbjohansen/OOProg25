@@ -13,39 +13,35 @@ public class BankAccount
 
     public BankAccount(double interestRate)
     {
-        if (interestRate < 0.0 || interestRate > 20.0)
-        {
-            IllegalInterestRateException e = new IllegalInterestRateException($"Interest rate was {interestRate} %");
-            throw e;
-        }
+		if (interestRate < 0.0 || interestRate > 20.0)
+		{
+			throw new ArgumentException($"In Constructor: Interest rate was {interestRate} % (must be between 0 and 20 %)");
+		}
 
-        InterestRate = interestRate;
+		InterestRate = interestRate;
         Balance = 0.0;
     }
 
     public void Deposit(double amount)
     {
-        if (amount < 0)
-        {
-            NegativeAmountException e = new NegativeAmountException($"Amount was {amount} kr.");
-            throw e;
-        }
+		if (amount < 0)
+		{
+			throw new ArgumentException($"In Deposit: Amount was {amount} kr. (negative amount not allowed)");
+		}
 
-        Balance = Balance + amount;
+		Balance = Balance + amount;
     }
 
     public void Withdraw(double amount)
     {
-        if (amount < 0)
-        {
-            NegativeAmountException e = new NegativeAmountException($"Amount was {amount} kr.");
-            throw e;
-        }
+		if (amount < 0)
+		{
+			throw new ArgumentException($"In Withdraw: Amount was {amount} kr. (negative amount not allowed)");
+		}
 
-        if (Balance < amount)
+		if (Balance < amount)
         {
-            WithdrawAmountTooLargeException e = new WithdrawAmountTooLargeException($"Amount was {amount} kr., balance was {Balance} kr.");
-            throw e;
+            throw new ArgumentException($"In Withdraw: Amount was {amount} kr., balance was {Balance} kr.");
         }
 
         Balance = Balance - amount;
