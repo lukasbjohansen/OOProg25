@@ -1,4 +1,7 @@
-﻿
+﻿/*
+ * Pro.1.4 solution by Lukas Johansen
+ */
+
 // PART 1
 // The length of a string is the number of characters in the string
 string hero1Name = "Per";

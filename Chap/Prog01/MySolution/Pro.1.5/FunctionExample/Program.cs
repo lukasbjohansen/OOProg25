@@ -1,4 +1,7 @@
-﻿
+﻿/*
+ * Pro.1.5 solution by Lukas Johansen
+ */
+
 double rect1x1 = 4.5;
 double rect1y1 = 2.3;
 double rect1x2 = 8.2;
