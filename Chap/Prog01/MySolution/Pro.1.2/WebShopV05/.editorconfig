@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE0211: Convert to 'Program.Main' style program
+dotnet_diagnostic.IDE0211.severity = none
+
+# CS0219: Variable is assigned but its value is never used
+dotnet_diagnostic.CS0219.severity = none
