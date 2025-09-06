@@ -1,6 +1,15 @@
-﻿
-Warrior warriorA = new Warrior("Ragnar", 200, 60);
-Warrior warriorB = new Warrior("Lagertha", 240, 50);
+﻿/*
+ * OOP.1.7 solution by Lukas Johansen
+ */
+
+// Initialisation of sword objects
+Sword excalibur = new Sword("Excalibur", 30, 70);
+Sword nail = new Sword("Nail", 20, 60);
+
+Warrior warriorA = new Warrior("Ragnar", 200, excalibur, damageFactor: 3);
+Warrior warriorB = new Warrior("Lagertha", 240, nail, excalibur, .8);
+
+warriorB.ToggleSwords();
 
 Console.WriteLine("Just after creation:");
 Console.WriteLine(warriorA.GetInfo());

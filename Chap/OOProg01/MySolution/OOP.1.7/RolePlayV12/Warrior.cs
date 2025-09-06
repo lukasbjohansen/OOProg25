@@ -1,22 +1,25 @@
-﻿
+﻿/*
+ * OOP.1.7 solution by Lukas Johansen
+ */
+
 public class Warrior
 {
     #region Instance fields
     private string _name;
     private int _hitPoints;
-    private int _maxDamage;
-    private int _minDamage;
-    private Random _generator;
+    private Sword _sword;
+    private Sword? _secondarySword;
+    private double _damageMultiplier;
     #endregion
 
     #region Constructor
-    public Warrior(string name, int hitPoints, int maxDamage)
+    public Warrior(string name, int hitPoints, Sword sword, Sword? secondarySword = null, double damageFactor = 1)
     {
         _name = name;
         _hitPoints = hitPoints;
-        _maxDamage = maxDamage;
-        _minDamage = _maxDamage / 4;
-        _generator = new Random(Guid.NewGuid().GetHashCode());
+        _sword = sword;
+        _secondarySword = secondarySword;
+        _damageMultiplier = damageFactor;
     }
     #endregion
 
@@ -45,12 +48,20 @@ public class Warrior
 
     public int DealDamage()
     {
-        return _generator.Next(_minDamage, _maxDamage);
+        return (int) (_sword.DealDamage() * _damageMultiplier);
     }
 
     public string GetInfo()
     {
         return $"{Name} has {HitPoints} hit points ({(Dead ? "dead" : "alive")})";
+    }
+
+    public void ToggleSwords()
+    {
+        if (_secondarySword == null) return;
+        Sword temp = _sword;
+        _sword = _secondarySword;
+        _secondarySword = temp;
     }
     #endregion
 }
