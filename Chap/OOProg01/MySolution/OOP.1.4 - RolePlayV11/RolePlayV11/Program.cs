@@ -7,15 +7,13 @@ Warrior warriorB = new Warrior("Lagertha", 100);
 
 // Battle to death
 while (true) {
-    int damage = warriorA.DealDamage();
-    warriorB.TakeDamage(damage);
+    int damage = warriorA.DealDamage(warriorB);
     Console.WriteLine($"{warriorA.Name} hit {warriorB.Name} for {damage} dmg.");
     if (warriorB.Dead) {
         Console.WriteLine($"{warriorB.Name} died with honor.");
         break;
     }
-    damage = warriorB.DealDamage();
-    warriorA.TakeDamage(damage);
+    damage = warriorB.DealDamage(warriorA);
     Console.WriteLine($"{warriorB.Name} hit {warriorA.Name} for {damage} dmg.");
     if (warriorA.Dead) {
         Console.WriteLine($"{warriorA.Name} died with honor.");

@@ -36,4 +36,3 @@ public class BankAccount
         _balance = _balance - amount;
     }
 }
-

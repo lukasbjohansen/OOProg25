@@ -5,7 +5,7 @@
 /// </summary>
 public class ListMethods
 {
-    public int FindSmallestNumber(List<int> numbers)
+    public static int FindSmallestNumber(List<int> numbers)
     {
         if (numbers.Count == 0)
         {
@@ -25,7 +25,7 @@ public class ListMethods
         }
     }
 
-    public int FindAverage(List<int> numbers)
+    public static int FindAverage(List<int> numbers)
     {
         if (numbers.Count == 0)
         {

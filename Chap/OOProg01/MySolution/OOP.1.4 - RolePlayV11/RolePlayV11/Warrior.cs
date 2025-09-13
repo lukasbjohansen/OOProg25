@@ -43,9 +43,12 @@ public class Warrior
     {
         _hitPoints -= amount;
     }
-    public int DealDamage()
+    public int DealDamage(Warrior? target = null)
     {
         int random = new Random().Next(10, 30);
+        if (target != null) {
+            target.TakeDamage(random);
+        }
         return random;
     }
     #endregion

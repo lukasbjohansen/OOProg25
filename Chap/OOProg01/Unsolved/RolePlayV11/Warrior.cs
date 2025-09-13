@@ -19,7 +19,6 @@ public class Warrior
     {
         get { return _name; }
     }
-
     public int Level
     {
         get { return _level; }
