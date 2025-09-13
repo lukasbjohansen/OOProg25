@@ -1,4 +1,6 @@
-﻿
+﻿/*
+ * OOP.1.9 solution by Lukas Johansen
+ */
 /// <summary>
 /// This class contains a few methods for 
 /// some common List operations
