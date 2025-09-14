@@ -1,4 +1,6 @@
-﻿
+﻿/*
+ * OOP.1.8 solution by Lukas Johansen
+ */
 /// <summary>
 /// This class represents a "stock portfolio", which is
 /// just a set of stocks owned by an individual.
@@ -44,8 +46,21 @@ public class Portfolio
     {
         get
         {
-            // Implement the property as described above...
-            return 0.0;
+            double totalInitial = (_stock1.InitialPrice * _stock1.Amount) +
+                           (_stock2.InitialPrice * _stock2.Amount) +
+                           (_stock3.InitialPrice * _stock3.Amount);
+            double totalCurrent = (_stock1.CurrentPrice * _stock1.Amount) +
+                            (_stock2.CurrentPrice * _stock2.Amount) +
+                            (_stock3.CurrentPrice * _stock3.Amount);
+            double earnings = totalCurrent - totalInitial;
+            if (totalInitial != 0)
+            {
+                return (earnings / totalInitial) * 100.0;
+            }
+            else 
+            {
+                return 0.0;
+            }
         }
     }
     #endregion
@@ -62,6 +77,9 @@ public class Portfolio
     public void UpdateCurrentPrices(double percent1, double percent2, double percent3)
     {
         // Implement the method as described above...
+        _stock1.CurrentPrice = CalculateNewPrice(_stock1.CurrentPrice, percent1);
+        _stock2.CurrentPrice = CalculateNewPrice(_stock2.CurrentPrice, percent2);
+        _stock3.CurrentPrice = CalculateNewPrice(_stock3.CurrentPrice, percent3);
     }
 
     /// <summary>
