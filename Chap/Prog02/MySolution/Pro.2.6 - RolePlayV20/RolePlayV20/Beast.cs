@@ -9,7 +9,6 @@ public class Beast
 {
     #region Instance fields
     private int _hitPoints;
-    private NumberGenerator _generator;
     private BattleLog _log;
     #endregion
 
@@ -17,9 +16,8 @@ public class Beast
     /// <summary>
     /// Create a Beast, using references to a random number generator and a battle log
     /// </summary>
-    public Beast(NumberGenerator generator, BattleLog log)
+    public Beast(BattleLog log)
     {
-        _generator = generator;
         _log = log;
         Reset();
     }
@@ -50,7 +48,7 @@ public class Beast
     /// </summary>
     public int DealDamage()
     {
-        int damage = _generator.Next(10, 25);
+        int damage = RNG.NextIncl(10, 25);
         string message = $"Beast dealt {damage} damage!";
         _log.Save(message);
         return damage;

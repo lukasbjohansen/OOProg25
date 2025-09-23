@@ -1,8 +1,6 @@
 ﻿
 using System.Xml;
 
-Console.WriteLine("Delete this line when you have written your code");
-
 // SHAPE A (10 stars in a single row)
 //
 // **********
