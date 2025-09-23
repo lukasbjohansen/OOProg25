@@ -1,4 +1,6 @@
-﻿
+﻿/*
+ * Pro.2.6 solution by Lukas Johansen
+ */
 /// <summary>
 /// This class implements a simple game character
 /// 1) The character has a certain number of "hit points"
@@ -8,6 +10,9 @@
 public class Hero
 {
     #region Instance fields
+    private readonly int _maxHp;
+    private readonly int _minDmg;
+    private readonly int _maxDmg;
     private int _hitPoints;
     private NumberGenerator _generator;
     private BattleLog _log;
@@ -17,10 +22,13 @@ public class Hero
     /// <summary>
     /// Create a Hero, using references to a random number generator and a battle log
     /// </summary>
-    public Hero(NumberGenerator generator, BattleLog log)
+    public Hero(NumberGenerator generator, BattleLog log, int startingHp, int minDmg, int maxDmg)
     {
         _generator = generator;
         _log = log;
+        _maxHp = startingHp;
+        _minDmg = minDmg;
+        _maxDmg = maxDmg;
         Reset();
     }
     #endregion
@@ -41,7 +49,7 @@ public class Hero
     /// </summary>
     public void Reset()
     {
-        _hitPoints = 100;
+        _hitPoints = _maxHp;
     }
 
     /// <summary>
@@ -50,7 +58,7 @@ public class Hero
     /// </summary>
     public int DealDamage()
     {
-        int damage = _generator.Next(10, 30);
+        int damage = _generator.Next(_minDmg, _maxDmg);
         string message = $"Hero dealt {damage} damage!";
         _log.Save(message);
         return damage;
