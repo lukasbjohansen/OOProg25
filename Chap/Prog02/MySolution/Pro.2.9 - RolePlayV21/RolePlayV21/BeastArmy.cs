@@ -15,6 +15,10 @@ public class BeastArmy
     {
         _army.Add(aBeast);
     }
+    public void SetArmy(List<Beast> list)
+    {
+        _army = list;
+    }
 
     /// <summary>
     /// Dead is defined as: All members of the army must be dead
@@ -23,7 +27,11 @@ public class BeastArmy
     {
         get
         {
-            return false; // TODO - implement as specified
+            foreach (var beast in _army)
+            {
+                if (!beast.Dead) return false;
+            }
+            return true;
         }
     }
 
@@ -35,8 +43,10 @@ public class BeastArmy
         get
         {
             List<string> alive = new List<string>();
-
-            // TODO - implement as specified
+            foreach (var beast in _army)
+            {
+                if (!beast.Dead) alive.Add(beast.Name);
+            }
 
             return alive;
         }
@@ -50,8 +60,10 @@ public class BeastArmy
     public int DealDamage()
     {
         int totalDamage = 0;
-
-        // TODO - implement as specified
+        foreach (var beast in _army)
+        {
+            if (!beast.Dead) totalDamage += beast.DealDamage();
+        }
 
         return totalDamage;
     }
@@ -63,6 +75,20 @@ public class BeastArmy
     /// </summary>
     public void ReceiveDamage(int damage)
     {
-        // TODO - implement as specified
+        foreach (var beast in _army) 
+        {
+            if (!beast.Dead)
+            {
+                beast.ReceiveDamage(damage);
+                return;
+            }
+        }
+    }
+    public void Reset()
+    {
+        foreach (var beast in _army)
+        {
+            beast?.Reset();
+        }
     }
 }

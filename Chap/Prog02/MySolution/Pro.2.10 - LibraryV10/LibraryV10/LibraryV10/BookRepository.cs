@@ -30,7 +30,8 @@ public class BookRepository
     /// </summary>
     public void AddBook(Book aBook)
     {
-        // TODO
+        if (LookupBook(aBook.ISBN) != null) throw new ArgumentException("Goddam book ISBN alr exist u moron...");
+        _books.Add(aBook);
     }
 
     /// <summary>
@@ -40,9 +41,33 @@ public class BookRepository
     /// </summary>
     public Book? LookupBook(string isbn)
     {
-        // TODO
+        if (true) // true:loop, false:delegate
+        {
 
-        return null;
+
+            // Using loop
+            foreach (var book in _books)
+            {
+                if (book.ISBN == isbn) return book;
+            }
+            return null;
+
+
+        }
+        else
+        {
+
+
+            // Using delegate
+            return _books.Find(MatchIsbn);
+
+            bool MatchIsbn(Book book)
+            {
+                return book.ISBN == isbn;
+            }
+
+
+        }
     }
 
     /// <summary>
@@ -53,7 +78,14 @@ public class BookRepository
     /// </summary>
     public void DeleteBook(string isbn)
     {
-        // TODO
+        foreach (var book in _books)
+        {
+            if (book.ISBN == isbn)
+            {
+                _books.Remove(book);
+                break;
+            }
+        }
     }
     #endregion
 }
