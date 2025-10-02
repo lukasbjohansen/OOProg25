@@ -6,17 +6,18 @@ public class Cache
 {
     #region Instance fields
     private int?[,] cacheValues;
+    private readonly int _maxX, _maxY;
     #endregion
 
     #region Constructor
-    public Cache()
+    public Cache(int maxX, int maxY)
     {
         // Create a 5x5 cache of results
-        cacheValues = new int?[5, 5];
+        cacheValues = new int?[maxX, maxY];
 
-        for (int x = 0; x < 5; x++)
+        for (int x = 0; x < maxX; x++)
         {
-            for (int y = 0; y < 5; y++)
+            for (int y = 0; y < maxY; y++)
             {
                 cacheValues[x, y] = null;
             }

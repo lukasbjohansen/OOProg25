@@ -1,4 +1,13 @@
 ﻿
+public enum WeatherType
+{
+    Stormy,
+    Rainy,
+    Changing,
+    Fair,
+    Very_Dry
+}
+
 /// <summary>
 ///  Simple barometer, measuring pressure in hPa (hectopascal)
 /// </summary>
@@ -7,29 +16,29 @@ public class Barometer
     #region Properties
     public double Pressure { get; set; }
 
-    public string WeatherDescription
+    public WeatherType WeatherDescription
     {
         get
         {
             if (Pressure < 980)
             {
-                return "Stormy";
+                return WeatherType.Stormy;
             }
             else if (Pressure < 1000)
             {
-                return "Rainy";
+                return WeatherType.Rainy;
             }
             else if (Pressure < 1020)
             {
-                return "Changing";
+                return WeatherType.Changing;
             }
             else if (Pressure < 1040)
             {
-                return "Fair";
+                return WeatherType.Fair;
             }
             else
             {
-                return "Very Dry";
+                return WeatherType.Very_Dry;
             }
         }
     }

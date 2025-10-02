@@ -9,13 +9,17 @@ public class Simulator
     #region Instance fields
     private Random _generator;
     private Cache? _cache;
+    private readonly int _maxX;
+    private readonly int _maxY;
     #endregion
 
     #region Constructor
-    public Simulator()
+    public Simulator(int maxX, int maxY)
     {
+        _maxX = maxX;
+        _maxY = maxY;
         _generator = new Random();
-        _cache = new Cache(); // switch to null for cache-less calculation;
+        _cache = new Cache(maxX, maxY); // switch to null for cache-less calculation;
     }
     #endregion
 
@@ -27,7 +31,7 @@ public class Simulator
     {
         int? result = null;
 
-        if (x < 5 && x >= 0 && y < 5 && y >= 0)
+        if (x < _maxX && x >= 0 && y < _maxY && y >= 0)
         {
             if (_cache != null)
             {

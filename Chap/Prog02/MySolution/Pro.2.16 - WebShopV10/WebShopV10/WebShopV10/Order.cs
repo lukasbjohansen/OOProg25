@@ -19,12 +19,45 @@ public class Order
     #region Properties
     public double TotalOrderPrice
     {
-        get { return CalculateTotalOrderPrice(); }
+        get 
+        {
+            double price = 0;
+            for (int i = 0; i < _itemPriceList.Count; i++)
+            {
+                double itemPrice = _itemPriceList[i];
+                itemPrice = ApplyTax(itemPrice);
+                itemPrice = ApplyShipping(itemPrice, i);
+                itemPrice = ApplyEUTax(itemPrice);
+                price += itemPrice;
+            }
+            return price;
+        }
     }
     #endregion
 
     #region Methods
-    private double CalculateTotalOrderPrice() // TODO - Sarah, can you review this on Friday?
+    private double ApplyTax(double price)
+    {
+        double cheapItemThreshold = 40.0;
+        double cheapItemTaxRate = 0.10;
+        double expensiveItemTaxRate = 0.08;
+        return price < cheapItemThreshold ? price * (1 + cheapItemTaxRate) : price * (1 + expensiveItemTaxRate);
+    }
+    private double ApplyShipping(double price, int itemIndex)
+    {
+        double shippingFirstItemsPrice = 9.0;
+        double shippingOtherItemsPrice = 5.0;
+        int shippingThreshold = 3;
+        return itemIndex < shippingThreshold ? price + shippingFirstItemsPrice : price + shippingOtherItemsPrice;
+    }
+    private double ApplyEUTax(double price)
+    {
+        double maxEUTax = 1.0;
+        double euTaxRate = 0.02;
+        double tax = price * euTaxRate;
+        return price + (tax > maxEUTax ? maxEUTax : tax);
+    }
+    public double CalculateTotalOrderPrice() // TODO - Sarah, can you review this on Friday?
     {
         // Make a copy of the item price list
         List<double> itemPriceListCopy = new List<double>();
