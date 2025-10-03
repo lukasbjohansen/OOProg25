@@ -30,7 +30,7 @@ public class BookRepository
     /// </summary>
     public void AddBook(Book aBook)
     {
-        // TODO
+        if (!_books.ContainsKey(aBook.ISBN)) _books.Add(aBook.ISBN, aBook);
     }
 
     /// <summary>
@@ -40,8 +40,7 @@ public class BookRepository
     /// </summary>
     public Book? LookupBook(string isbn)
     {
-        // TODO
-        return null;
+        return _books.ContainsKey(isbn) ? _books[isbn] : null;
     }
 
     /// <summary>
@@ -52,7 +51,7 @@ public class BookRepository
     /// </summary>
     public void DeleteBook(string isbn)
     {
-        // TODO
+        _books.Remove(isbn);
     }
     #endregion
 }

@@ -30,6 +30,7 @@ public class BookRepository
     /// </summary>
     public void AddBook(Book aBook)
     {
+        if (aBook == null) return;
         if (LookupBook(aBook.ISBN) != null) throw new ArgumentException("Goddam book ISBN alr exist u moron...");
         _books.Add(aBook);
     }
@@ -78,14 +79,9 @@ public class BookRepository
     /// </summary>
     public void DeleteBook(string isbn)
     {
-        foreach (var book in _books)
-        {
-            if (book.ISBN == isbn)
-            {
-                _books.Remove(book);
-                break;
-            }
-        }
+        Book? book = LookupBook(isbn);
+        if (book != null) _books.Remove(book);
     }
+    Dictionary<string, int> ints = new Dictionary<string, int>();
     #endregion
 }

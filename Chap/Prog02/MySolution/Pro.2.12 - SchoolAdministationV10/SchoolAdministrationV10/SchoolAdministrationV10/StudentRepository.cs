@@ -32,7 +32,7 @@ public class StudentRepository
     /// </summary>
     public void AddStudent(Student aStudent)
     {
-        // TODO
+        _students.TryAdd(aStudent.ID,aStudent);
     }
 
     /// <summary>
@@ -41,8 +41,7 @@ public class StudentRepository
     /// </summary>
     public Student? GetStudent(int id)
     {
-        // TODO
-        return null;
+        return _students.ContainsKey(id) ? _students[id] : null;
     }
 
     /// <summary>
@@ -51,8 +50,7 @@ public class StudentRepository
     /// </summary>
     public int? GetAverageForStudent(int id)
     {
-        // TODO
-        return null;
+        return _students.ContainsKey(id) ? _students[id].ScoreAverage : null;
     }
 
     /// <summary>
@@ -63,8 +61,17 @@ public class StudentRepository
     /// </summary>
     public int? GetTotalAverage()
     {
-        // TODO
-        return null;
+        if (_students.Count == 0) return null;
+        int? total = 0;
+        int notNullStudents = 0;
+        foreach (var student in _students.Values) {
+            if (student.ScoreAverage != null) {
+				notNullStudents++;
+				total += student.ScoreAverage;
+			} 
+        }
+        total /= notNullStudents;
+        return total;
     }
     #endregion
 }
