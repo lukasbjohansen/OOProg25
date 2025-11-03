@@ -13,22 +13,25 @@ public class BankAccount
 
     public BankAccount(double interestRate)
     {
-        InterestRate = interestRate;
+        if (interestRate < 0.0 || interestRate > 20.0) 
+            throw new ArgumentException("In Constructor: Interest rate of the account must be between 0.0 and 20.0");
+		InterestRate = interestRate;
         Balance = 0.0;
     }
 
     public void Deposit(double amount)
     {
-        Balance = Balance + amount;
+        if (amount <= 0) throw new ArgumentException("In Deposit: Amount must be positive");
+		Balance = Balance + amount;
     }
 
     public void Withdraw(double amount)
     {
-        if (Balance < amount)
+        if (amount <= 0) throw new ArgumentException("In Withdraw: Amount must be positive");
+		if (Balance < amount)
         {
             throw new ArgumentException($"In Withdraw: Amount was {amount} kr., balance was {Balance} kr.");
         }
-
         Balance = Balance - amount;
     }
 }
