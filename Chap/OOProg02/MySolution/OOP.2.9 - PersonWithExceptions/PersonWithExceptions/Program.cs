@@ -5,10 +5,10 @@ PersonService personService = new PersonService(personRepository);
 try
 {
     Console.WriteLine("Trying something...");
-
-    // Try out some calls to Person/PersonRepository/PersonService here
-
-    Console.WriteLine("Done, all is well...");
+    Person p1 = new Person("py",2,500);
+    Person p2 = new Person("peter",2,49);
+    personService.CreatePerson("", p1.Height, p1.Weight);
+	Console.WriteLine("Done, all is well...");
 }
 catch (ArgumentException arguEx)
 {
