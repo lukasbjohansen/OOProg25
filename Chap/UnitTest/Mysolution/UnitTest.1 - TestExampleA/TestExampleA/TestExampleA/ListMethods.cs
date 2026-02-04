@@ -13,8 +13,9 @@ public class ListMethods
     {
         int sum = 0;
         int prevSum = sum;
-        
-        if (numbers == null)
+        const int SQR_ROOT_OF_INT_LIM = 46340;
+
+		if (numbers == null)
             throw new ArgumentException("The list cannot be null");
         if (numbers.Count == 0)
             throw new ArgumentException("The list was empty");
@@ -22,7 +23,7 @@ public class ListMethods
         {
             if (n > 0)
             {
-                if (n > 46340) // squareroot of integer limit
+                if (n > SQR_ROOT_OF_INT_LIM)
 					throw new OverflowException();
 				sum += n * n;
                 if (sum < prevSum)
