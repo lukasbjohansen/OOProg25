@@ -13,11 +13,24 @@ public class EmployeeRepository
         get { return _employees.Values.ToList(); }
     }
 
-    public void Insert(string name, Employee anEmployee)
+	public int Count
+	{
+		get { return _employees.Count; }
+	}
+
+	public void PrintAll()
+	{
+		foreach (Employee item in _employees.Values)
+		{
+			Console.WriteLine(item);
+		}
+	}
+
+	public void Insert(string name, Employee employee)
     {
         if (!_employees.ContainsKey(name))
         {
-            _employees.Add(name, anEmployee);
+            _employees.Add(name, employee);
         }
     }
 

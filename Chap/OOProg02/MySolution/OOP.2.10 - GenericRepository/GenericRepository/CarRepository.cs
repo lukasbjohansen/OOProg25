@@ -12,11 +12,24 @@
         get { return _cars.Values.ToList(); }
     }
 
-    public void Insert(string licensePlate, Car aCar)
+    public int Count
+    {
+        get { return _cars.Count; }
+    }
+
+	public void PrintAll()
+	{
+		foreach (Car item in _cars.Values)
+		{
+			Console.WriteLine(item);
+		}
+	}
+
+	public void Insert(string licensePlate, Car car)
     {
         if (!_cars.ContainsKey(licensePlate))
         {
-            _cars.Add(licensePlate, aCar);
+            _cars.Add(licensePlate, car);
         }
     }
 
