@@ -1,5 +1,7 @@
 ﻿
-public class Circle
+using System.Numerics;
+
+public class Circle : IComparable<Circle>
 {
     #region Properties
     public double Radius { get; }
@@ -22,5 +24,12 @@ public class Circle
     {
         return $"Circle at ({X} , {Y}) has an area of {Area:#.000000}";
     }
-    #endregion
+
+	public int CompareTo(Circle? other)
+	{
+        if (other == null)
+            return 1;
+        return Area.CompareTo(other.Area);
+	}
+	#endregion
 }
