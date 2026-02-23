@@ -1,5 +1,5 @@
 ﻿
-public class Dog
+public class Dog : IComparable<Dog>
 {
     #region Properties
     public string Name { get; }
@@ -21,5 +21,12 @@ public class Dog
     {
         return $"{Name} is {Height} cm tall, and weighs {Weight} kgs.";
     }
-    #endregion
+
+	public int CompareTo(Dog? other)
+	{
+        if (other == null)
+            return 1;
+        return Weight.CompareTo(other.Weight);
+	}
+	#endregion
 }
