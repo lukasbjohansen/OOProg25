@@ -88,65 +88,86 @@ PrintEnumerableQueryResult("Query #1 - Full details of all Hotels", query1);
 
 #region Query #2
 // 2) List full details of all hotels in Roskilde
+var allHotelsInRoskilde = from h in query1
+                          where h.Address.ToLower().Contains("roskilde")
+                          select h;
 
-// PrintEnumerableQueryResult("Query #2 - Full details of all hotels in Roskilde", /* put your query result here */);
+PrintEnumerableQueryResult("Query #2 - Full details of all hotels in Roskilde", allHotelsInRoskilde);
 #endregion
 
 
 #region Query #3
 // 3) List the names of all hotels in Roskilde
+var namesOfHotelsInRoskilde = from h in allHotelsInRoskilde
+                              select h.Name;
 
-// PrintEnumerableQueryResult("Query #3 - Names of all hotels in Roskilde", /* put your query result here */);
+PrintEnumerableQueryResult("Query #3 - Names of all hotels in Roskilde", namesOfHotelsInRoskilde);
 #endregion
 
 
 #region Query #4
 // 4) List all double rooms with a price below 400 kr. pr. night
+var allDoubleBelow400 = from r in rooms
+                        where r.Type == "D" && r.Price < 400
+                        select r;
 
-// PrintEnumerableQueryResult("Query #4 - All double rooms with a price below 400 kr", /* put your query result here */);
+PrintEnumerableQueryResult("Query #4 - All double rooms with a price below 400 kr", allDoubleBelow400);
 #endregion
 
 
 #region Query #5
 // 5) List all double or family rooms with a price below 
 //    400 kr. pr. night, ordered by price
+var allDoubleOrFamiltyBelow400 = from r in rooms
+                                 where (r.Type == "D" || r.Type == "F") && r.Price < 400
+                                 select r;
 
-// PrintEnumerableQueryResult("Query #5 - All double or family rooms with a price below 400 kr. (ordered by price)", /* put your query result here */);
+PrintEnumerableQueryResult("Query #5 - All double or family rooms with a price below 400 kr. (ordered by price)", allDoubleOrFamiltyBelow400);
 #endregion
 
 
 #region Query #6
 // 6) List all hotels that start with "P"
+var allHotelsStartingWithP = from h in query1
+                             where h.Name.StartsWith('P')
+                             select h;
 
-// PrintEnumerableQueryResult("Query #6 - All hotels that start with \"P\"", /* put your query result here */);
+PrintEnumerableQueryResult("Query #6 - All hotels that start with \"P\"", allHotelsStartingWithP);
 #endregion
 
 
 #region Query #7
 // 7) Print the number of hotels
+var numberOfHotels = query1.Count();
 
-// PrintNumericQueryResult("Query # 7 - Total number of hotels", /* put your query result here */);
+PrintNumericQueryResult("Query # 7 - Total number of hotels", numberOfHotels);
 #endregion
 
 
 #region Query #8
 // 8) Print the number of hotels in Roskilde:
+var numberOfHotelsInRoskilde = allHotelsInRoskilde.Count();
 
-// PrintNumericQueryResult("Query # 8 - Total number of hotels in Roskilde", /* put your query result here */);
+PrintNumericQueryResult("Query # 8 - Total number of hotels in Roskilde", numberOfHotelsInRoskilde);
 #endregion
 
 
 #region Query #9
 // 9) Print the average price of a room
+var avgRoomPrice = (from r in rooms
+                   select r.Price).Average();
 
-// PrintNumericQueryResult("Query # 9 - Average price of a room", /* put your query result here */);
+PrintNumericQueryResult("Query # 9 - Average price of a room", avgRoomPrice);
 #endregion
 
 
 #region Query #10
 // 10) Print the total reveneue per night from all double rooms:
+var totalRevenueFromDoubleRooms = (from r in rooms
+                                   where r.Type == "D"
+                                   select r.Price).Sum();
 
-// PrintNumericQueryResult("Query # 10 - Total price for all double rooms", /* put your query result here */); 
+PrintNumericQueryResult("Query # 10 - Total price for all double rooms", totalRevenueFromDoubleRooms); 
 #endregion
 
 
